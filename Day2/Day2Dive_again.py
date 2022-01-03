@@ -3,9 +3,10 @@
 
 class Submarine:
 
-    def __init__(self, depth, hori):
-        self.depth = depth
+    def __init__(self, aim, hori):
         self.hori = hori
+        self.aim = aim
+        self.depth = 0
 
     def __str__(self):
         return print(f"Djupet är {self.depth} och längden är {self.hori}.")
@@ -13,15 +14,19 @@ class Submarine:
     def mult(self):
         return self.depth * self.hori
 
+    def mult_2(self):
+        return self.depth * self.hori
+
     # down, forward or up
     # increase the values of these to the object
     def add(self, direction, value):
         if direction == "forward":
             self.hori += value
+            self.depth += (self.aim*value)
         elif direction == "up":
-            self.depth -= value
+            self.aim -= value
         elif direction == "down":
-            self.depth += value
+            self.aim += value
 
 
 
@@ -35,7 +40,7 @@ with open("input_Day2.txt", "r", encoding = "utf-8") as file:
         sub.add(row_list[0], int(row_list[1]))
         #
 
-print(sub.mult())
+print(sub.mult_2())
 
-
+print("test")
 
